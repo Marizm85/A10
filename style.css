@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   color: white;
-  text-align: center;
   background-image: url('https://img.freepik.com/free-photo/frame-delicious-cookies-flat-lay_23-2148837086.jpg?semt=ais_hybrid&w=740');
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,36 +11,57 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
   margin-bottom: 20px;
+  color: #ddd;
 }
 
 input[type="text"] {
-  padding: 8px;
+  width: 90%;
+  max-width: 300px;
+  padding: 10px;
   font-size: 16px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 16px;
   font-size: 16px;
-  margin-top: 15px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid white;
-  color: white;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  color: black;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 #message {
-  margin-top: 25px;
-  font-size: 18px;
+  margin-top: 15px;
+  font-size: 16px;
 }
 
 #cookieConsentPopup {
