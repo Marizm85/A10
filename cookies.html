@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkCookie()">
+
+  <h2>Welcome to My Cookie Page</h2>
+  <p>Enter your name to store it in a cookie:</p>
+  <input type="text" id="usernameInput" placeholder="Your name">
+  <br>
+  <button onclick="saveName()">Save Name</button>
+
+  <div id="message"></div>
+
+  <div id="cookieConsentPopup">
+    <div class="cookie-box">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <p>
+        This website uses/requires the use of cookies. Data may be collected and stored during your experience with the site. 
+        Data may also be used and sold to third parties. The data being collected is used to enhance your experience. 
+        Please click the allow button or X out of the pop-up.
+      </p>
+      <button class="allow-btn" onclick="acceptCookies()">Allow</button>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(name) === 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function checkCookie() {
+      let consent = getCookie("cookieConsent");
+      if (consent === "accepted") {
+        document.getElementById("cookieConsentPopup").style.display = "none";
+        let username = getCookie("username");
+        if (username !== "") {
+          document.getElementById("message").innerText = "Welcome back, " + username + "!";
+        }
+      } else {
+        document.getElementById("cookieConsentPopup").style.display = "flex";
+      }
+    }
+
+    function acceptCookies() {
+      setCookie("cookieConsent", "accepted", 365);
+      document.getElementById("cookieConsentPopup").style.display = "none";
+      checkCookie();
+    }
+
+    function closePopup() {
+      document.getElementById("cookieConsentPopup").style.display = "none";
+    }
+
+    function saveName() {
+      let username = document.getElementById("usernameInput").value;
+      if (username !== "") {
+        setCookie("username", username, 365);
+        document.getElementById("message").innerText = "Thanks, " + username + "! Your name has been saved.";
+      }
+    }
+  </script>
+
+  <footer>
+    © 2025 Mariz Masoud IS 117 A10 assignment
+  </footer>
+</body>
+</html>
